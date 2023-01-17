@@ -8,7 +8,7 @@ export default StyleSheet.create({
     },
     contactContainer: {
         marginVertical: 7,
-        overflow: "hidden"
+        overflow: "hidden",
     },
     contactInfoContainer: {
         alignItems: "center",
@@ -35,4 +35,7 @@ export default StyleSheet.create({
     contactInfoDetail: {
         padding: 20
     },
+    sectionStyle: {
+        backgroundColor: "white"
+    }
 })
