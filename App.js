@@ -1,7 +1,6 @@
 import {SafeAreaView, StyleSheet, StatusBar, Platform} from "react-native";
-import {Registration} from "./src/screens/Registration";
-// import ContactList from "./src/screens/ContactList/ContactList";
-// import {groupingAlphabet} from "./src/utils/collection";
+
+import MainNavigation from "./src/navigations/MainNavigation"
 
 const barStyle = Platform.OS === "ios" ? "dark-content" : "light-content";
 
@@ -9,7 +8,7 @@ export default function App() {
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar barStyle={barStyle} />
-      <Registration />
+      <MainNavigation />
     </SafeAreaView>
   );
 }

@@ -1,10 +1,11 @@
 import React from "react";
-import {View, Text, Image, SectionList, TouchableOpacity, LayoutAnimation, FlatList} from "react-native";
+import {View, Text, Image, SectionList, TouchableOpacity, LayoutAnimation, FlatList, Pressable} from "react-native";
 
 import dummyUser from "../../fixtures/dummyUser.json";
 import {randomColor} from "../../utils/color";
 import {groupingAlphabet} from "../../utils/collection";
 import styles from "./styles";
+import {useNavigation} from "@react-navigation/native";
 
 const contact = [...dummyUser];
 
@@ -19,18 +20,24 @@ const RenderImage = React.memo((props) => (
 
 const RenderContact = React.memo((props) => {
     const {contact} = props;
+    const navigation = useNavigation();
     const [selectedId, setSelected] = React.useState("");
 
-    const onPressHandler = () => {
+    const onLongPressHandler = React.useCallback(() => {
         LayoutAnimation.configureNext(LayoutAnimation.Presets.spring);
         setSelected(selectedId === "" ? contact.id : "")
+    }, [selectedId])
+
+    const onPressHandler = () => {
+        navigation.navigate("Details", contact);
     }
 
     return (
-        <TouchableOpacity
+        <Pressable
             style={styles.contactContainer}
             onPress={onPressHandler}
             activeOpacity={1}
+            onLongPress={onLongPressHandler}
         >
             <View style={styles.contactInfoContainer}>
                 <RenderImage image={contact?.image}/>
@@ -51,7 +58,7 @@ const RenderContact = React.memo((props) => {
                     </View>
                 )
             }
-        </TouchableOpacity>
+        </Pressable>
     )
 })
 
@@ -61,9 +68,7 @@ const renderHeader = (section) => (
     </View>
 )
 
-const ContactList = () => {
-
-
+const Contact = () => {
     return (
         <SectionList
             sections={groupingAlphabet(contact, "firstName")}
@@ -71,8 +76,9 @@ const ContactList = () => {
             renderSectionHeader={(data) => renderHeader(data.section)}
             keyExtractor={(data) => data.id}
             stickySectionHeadersEnabled
+            style={styles.sectionStyle}
         />
     )
 }
 
-export default ContactList;
+export default Contact;
