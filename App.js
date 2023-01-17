@@ -1,12 +1,16 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import {SafeAreaView, StyleSheet, StatusBar, Platform} from "react-native";
+import {Registration} from "./src/screens/Registration";
+// import ContactList from "./src/screens/ContactList/ContactList";
+// import {groupingAlphabet} from "./src/utils/collection";
+
+const barStyle = Platform.OS === "ios" ? "dark-content" : "light-content";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaView style={styles.container}>
+      <StatusBar barStyle={barStyle} />
+      <Registration />
+    </SafeAreaView>
   );
 }
 
@@ -14,7 +18,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
     justifyContent: 'center',
   },
 });
