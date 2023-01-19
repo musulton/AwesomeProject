@@ -2,13 +2,14 @@ import {StyleSheet} from "react-native";
 
 const styles = StyleSheet.create({
     container: {
-        padding: 10
+        // padding: 10
     },
-    button: {
+    button: (disabled) => ({
         backgroundColor: "#2ECC71",
         padding: 15,
-        margin: 5
-    },
+        margin: 5,
+        opacity: disabled ? 0.5 : 1
+    }),
     buttonText: {
         color: "white",
         fontSize: 20,

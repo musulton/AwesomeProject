@@ -1,6 +1,7 @@
 import {SafeAreaView, StyleSheet, StatusBar, Platform} from "react-native";
 
-import MainNavigation from "./src/navigations/MainNavigation"
+import MainNavigation from "./src/navigations/RootNavigation"
+import Login from "./src/screens/Login/Login"
 
 const barStyle = Platform.OS === "ios" ? "dark-content" : "light-content";
 

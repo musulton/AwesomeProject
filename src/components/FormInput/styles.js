@@ -5,11 +5,11 @@ const styles = StyleSheet.create({
         margin: 10
     },
     label: {
-        fontSize: 16,
-        fontWeight: "bold"
+        fontSize: 18,
+        fontWeight: "bold",
+        marginBottom: 5
     },
     textInput: {
-        height: 50,
         fontSize: 25,
         padding: 10,
         borderWidth: 2,
